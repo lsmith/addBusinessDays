@@ -1,0 +1,3 @@
+var newDate = addBusinessDays(/* Date */ d, /* int */ plusDays);
+
+A JavaScript function to add n business days to a Date instance, returning a new Date.
