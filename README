@@ -1,3 +1,41 @@
-var newDate = addBusinessDays(/* Date */ d, /* int */ plusDays);
+A JavaScript function to add n business days to a Date instance.
 
-A JavaScript function to add n business days to a Date instance, returning a new Date.
+Several versions exist in the addBusinessDays.js file.  Choose the right
+one for your needs.
+
+Version 1: Modifies the Date in place.
+var d = new Date(2009, 10, 14);
+addBusinessDays(d, 1); // 2009-10-15
+addBusinessDays(d, 2); // 2009-10-19 because d + 3 falls on the weekend
+addBusinessDays(d, 3); // 2009-10-22 because d is modified in each call
+
+Version 2: Preserves the input Date.  Returns a new Date.
+var d = new Date(2009, 10, 14);
+var d2 = addBusinessDays(d, 1); // 2009-10-15
+var d3 = addBusinessDays(d, 2); // 2009-10-16 because d is unmodified
+var d4 = addBusinessDays(d, 3); // 2009-10-19 because d + 3 falls on the weekend
+
+Version 3: Modifies the Date.  Adjusts for holidays
+d = new Date(2009, 12, 22);
+addBusinessDays(d, 1); // 2009-12-23
+addBusinessDays(d, 2); // 2009-12-28 because d + 3 falls on a holiday and d + 4
+                       // falls on the weekend
+
+Version 4: Preserves the input Date.  Adjusts for holidays.  Returns a new Date.
+d = new Date(2009, 12, 22);
+var d2 = addBusinessDays(d, 1); // 2009-12-23
+var d3 = addBusinessDays(d, 2); // 2009-12-24 this can be configured to be
+                                // a holiday if desired
+var d4 = addBusinessDays(d, 3); // 2009-12-28 because d + 3 is a holiday, d + 4
+                                // falls on the weekend
+
+* NOTE: The algo assumes business days are between Monday and Friday.  Patches welcome to account for alternate work weeks.
+
+The holiday mapping is in an object attached to the addBusinessDays function
+named 'holidays'.  Assign the holidays for the desired years in the format:
+addBusinessDays.holidays.[YEAR][MONTHDAY] = true;
+e.g.
+addBusinessDays.holidays.['2009']['1126'] = true;
+
+or for holidays that always fall on the same date
+addBusinessDays.holidays.all['1225'] = true;
