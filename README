@@ -33,9 +33,9 @@ var d4 = addBusinessDays(d, 3); // 2009-12-28 because d + 3 is a holiday, d + 4
 
 The holiday mapping is in an object attached to the addBusinessDays function
 named 'holidays'.  Assign the holidays for the desired years in the format:
-addBusinessDays.holidays.[YEAR][MONTHDAY] = true;
+addBusinessDays.holidays[YEAR][MONTHDAY] = true;
 e.g.
-addBusinessDays.holidays.['2009']['1126'] = true;
+addBusinessDays.holidays['2009']['1126'] = true;
 
 or for holidays that always fall on the same date
 addBusinessDays.holidays.all['1225'] = true;
