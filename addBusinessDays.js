@@ -66,6 +66,8 @@ addBusinessDays.isHoliday = function (d) {
 //////////////////////////////////////////////////////
 //  modifies the input Date, accounts for holidays  //
 //////////////////////////////////////////////////////
+// @TODO: only accounts for the destination day being a holiday.  It doesn't
+// adjust for holidays between start and end date
 function addBusinessDays(d,n) {
     var day = d.getDay();
 
@@ -83,6 +85,8 @@ function addBusinessDays(d,n) {
 //////////////////////////////////////////////////////////////
 //  creates and modifies a new Date, accounts for holidays  //
 //////////////////////////////////////////////////////////////
+// @TODO: only accounts for the destination day being a holiday.  It doesn't
+// adjust for holidays between start and end date
 var addBusinessDays = (function () {
 
     function add(d,n) {
